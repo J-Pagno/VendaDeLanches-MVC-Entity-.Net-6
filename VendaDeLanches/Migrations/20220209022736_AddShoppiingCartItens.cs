@@ -4,7 +4,7 @@
 
 namespace VendaDeLanches.Migrations
 {
-    public partial class CorrectMigration : Migration
+    public partial class AddShoppiingCartItens : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,30 @@ namespace VendaDeLanches.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ShoppingCartItens",
+                columns: table => new
+                {
+                    ShoppingCartId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    SnackId = table.Column<int>(type: "int", nullable: true),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ShoppingCartItemId = table.Column<int>(type: "int", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShoppingCartItens", x => x.ShoppingCartId);
+                    table.ForeignKey(
+                        name: "FK_ShoppingCartItens_Snacks_SnackId",
+                        column: x => x.SnackId,
+                        principalTable: "Snacks",
+                        principalColumn: "SnackId");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingCartItens_SnackId",
+                table: "ShoppingCartItens",
+                column: "SnackId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Snacks_CategoryId",
                 table: "Snacks",
@@ -57,6 +81,9 @@ namespace VendaDeLanches.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ShoppingCartItens");
+
             migrationBuilder.DropTable(
                 name: "Snacks");
 

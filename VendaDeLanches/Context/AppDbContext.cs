@@ -14,5 +14,7 @@ namespace VendaDeLanches.Context
 
         public DbSet<Snack> Snacks { get; set; }
 
+        public DbSet<ShoppingCart> ShoppingCartItens { get; set; }
+
     }
 }

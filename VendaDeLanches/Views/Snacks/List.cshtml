@@ -1,0 +1,16 @@
+﻿@model SnackListViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<div>
+    <h2>@Model.currentCategory</h2>
+</div>
+
+<div class="row">
+    @foreach (var Snack in Model.Snacks)
+    {
+        <partial name="_SnacksAbstract" for="@Snack" />
+    }
+</div>
