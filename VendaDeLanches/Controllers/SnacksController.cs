@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VendaDeLanches.Models;
 using VendaDeLanches.Repositories.Interfaces;
 using VendaDeLanches.ViewModels;
 
@@ -13,16 +14,36 @@ namespace VendaDeLanches.Controllers
             _snackRepository = snackRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(string category)
         {
-            //var snacks = _snackRepository.Snacks;
+            IEnumerable<Snack> snacks;
+            string currentCategory = string.Empty;
 
-            //return View(snacks);
+            if (string.IsNullOrEmpty(category))
+            {
+                snacks = _snackRepository.Snacks.OrderBy(x => x.SnackId);
+            }
+            else 
+            {
+                if (string.Equals("Normal", category, StringComparison.OrdinalIgnoreCase))
+                {
+                    snacks = _snackRepository.Snacks.Where(sc => sc.Category.CategoryName.Equals("Normal"))
+                        .OrderBy(s => s.SnackName);
+                }
+                else
+                {
+                    snacks = _snackRepository.Snacks.Where(sc => sc.Category.CategoryName.Equals("Natural"))
+                        .OrderBy(s => s.SnackName);
+                }
 
-            var snackListViewModel = new SnackListViewModel();
+                currentCategory = category;
+            }
 
-            snackListViewModel.Snacks = _snackRepository.Snacks;
-            snackListViewModel.currentCategory = "Categoria Atual";
+            var snackListViewModel = new SnackListViewModel 
+            {
+                Snacks = snacks,
+                currentCategory = currentCategory
+            };
 
             return View(snackListViewModel);
 

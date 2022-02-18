@@ -12,8 +12,8 @@ using VendaDeLanches.Context;
 namespace VendaDeLanches.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220209022736_AddShoppiingCartItens")]
-    partial class AddShoppiingCartItens
+    [Migration("20220209024636_AddShoppingCartItens")]
+    partial class AddShoppingCartItens
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

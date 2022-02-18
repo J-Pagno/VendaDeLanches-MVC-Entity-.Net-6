@@ -1,21 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VendaDeLanches.Models;
+using VendaDeLanches.Repositories.Interfaces;
+using VendaDeLanches.ViewModels;
 
 namespace VendaDeLanches.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ISnacksRepository _snacksRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ISnacksRepository snacksRepository )
         {
-            _logger = logger;
+            _snacksRepository = snacksRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                FavoriteSnacks = _snacksRepository.PreferredSnacks
+            };
+
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
@@ -28,5 +35,7 @@ namespace VendaDeLanches.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

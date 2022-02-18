@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VendaDeLanches.Context;
+using VendaDeLanches.Models;
 using VendaDeLanches.Repositories;
 using VendaDeLanches.Repositories.Interfaces;
 
@@ -22,7 +23,15 @@ public class Startup
 
         services.AddTransient<ISnacksRepository, SnackRepository>();
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+        services.AddScoped(sp => ShoppingCart.GetCart(sp));
+        //Acessa os recursos do httpContext
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+        //Adiciona o uso de cache em memória
+        services.AddDistributedMemoryCache();
+
+        //Habilita o midware da session
+        services.AddSession();
 
         services.AddControllersWithViews();
     }
@@ -45,10 +54,19 @@ public class Startup
 
         app.UseRouting();
 
+        //Ativa o midware
+        app.UseSession();
+
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {
+            endpoints.MapControllerRoute(
+                name: "categoryFilter",
+                pattern: "Snack/{action}/{categoryId?}",
+                defaults: new { controller = "Snacks", Action = "List" }
+                );             
+
             endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

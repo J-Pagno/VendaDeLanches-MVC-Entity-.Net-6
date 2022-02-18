@@ -1,0 +1,22 @@
+﻿@model ShoppingCartViewModel
+
+    <a asp-controller="ShoppingCart" asp-action="Index" style="text-decoration:none;color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity))!important;
+">
+        <span>
+            <img src="~/img/shopping-cart-empty-tool_icon-icons.com_56128.svg" style="width: 24px; height: 24px;"/>
+        </span>
+@if(Model.ShoppingCart.ShoppingCartItens.Count > 0)
+{
+
+        <span>
+            @Model.ShoppingCart.ShoppingCartItens.Count
+        </span>
+    
+}else
+{
+        <span>
+            0
+        </span>
+}
+
+</a>

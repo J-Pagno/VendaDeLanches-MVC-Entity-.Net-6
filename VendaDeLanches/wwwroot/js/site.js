@@ -1,4 +1,18 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
 
-// Write your JavaScript code.
+    $('.radio-group .radio').click(function () {
+        $('.radio').addClass('gray');
+        $(this).removeClass('gray');
+    });
+
+    $('.plus-minus .plus').click(function () {
+        var count = $(this).parent().prev().text();
+        $(this).parent().prev().html(Number(count) + 1);
+    });
+
+    $('.plus-minus .minus').click(function () {
+        var count = $(this).parent().prev().text();
+        $(this).parent().prev().html(Number(count) - 1);
+    });
+
+});

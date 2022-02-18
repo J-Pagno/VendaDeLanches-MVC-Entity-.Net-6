@@ -4,7 +4,7 @@
 
 namespace VendaDeLanches.Migrations
 {
-    public partial class AddShoppiingCartItens : Migration
+    public partial class AddShoppingCartItens : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
