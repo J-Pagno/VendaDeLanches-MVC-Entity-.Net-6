@@ -9,8 +9,18 @@
 </div>
 
 <div class="row">
+    @{
+        var quantitySnack = 0;
+    }
     @foreach (var Snack in Model.Snacks)
     {
         <partial name="_SnacksAbstract" for="@Snack" />
+        quantitySnack++;
+    }
+    @if (quantitySnack == 0)
+    {
+        <hr />
+        <br />
+        <p>Nenhum lanche foi encontrado.</p>
     }
 </div>

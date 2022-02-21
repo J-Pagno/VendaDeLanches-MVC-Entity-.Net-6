@@ -19,27 +19,20 @@ namespace VendaDeLanches.Controllers
             IEnumerable<Snack> snacks;
             string currentCategory = string.Empty;
 
-            if (string.IsNullOrEmpty(category))
-            {
-                snacks = _snackRepository.Snacks.OrderBy(x => x.SnackId);
-            }
-            else 
-            {
-                if (string.Equals("Normal", category, StringComparison.OrdinalIgnoreCase))
-                {
-                    snacks = _snackRepository.Snacks.Where(sc => sc.Category.CategoryName.Equals("Normal"))
-                        .OrderBy(s => s.SnackName);
-                }
-                else
-                {
-                    snacks = _snackRepository.Snacks.Where(sc => sc.Category.CategoryName.Equals("Natural"))
-                        .OrderBy(s => s.SnackName);
-                }
 
-                currentCategory = category;
+            if (!string.IsNullOrEmpty(category))
+            {
+                snacks = _snackRepository.Snacks.Where(sc => sc.Category.CategoryName.Equals(category))
+                    .OrderBy(s => s.SnackName);
+            }
+            else
+            {
+                snacks = _snackRepository.Snacks;
             }
 
-            var snackListViewModel = new SnackListViewModel 
+            currentCategory = category;
+
+            var snackListViewModel = new SnackListViewModel
             {
                 Snacks = snacks,
                 currentCategory = currentCategory
@@ -48,5 +41,12 @@ namespace VendaDeLanches.Controllers
             return View(snackListViewModel);
 
         }
+
+        public IActionResult Details(int snackId)
+        {
+            var snackToDetail = _snackRepository.Snacks.FirstOrDefault(s => s.SnackId == snackId);
+            return View(snackToDetail);
+        }
+
     }
 }

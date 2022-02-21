@@ -65,7 +65,7 @@ public class Startup
                 name: "categoryFilter",
                 pattern: "Snack/{action}/{categoryId?}",
                 defaults: new { controller = "Snacks", Action = "List" }
-                );             
+                );
 
             endpoints.MapControllerRoute(
                 name: "default",

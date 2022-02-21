@@ -31,7 +31,7 @@ namespace VendaDeLanches.Controllers
             return View(shoppingCartVM);
         }
 
-        public RedirectToActionResult AddItemShoppingCart(int snackId)
+        public RedirectToActionResult AddShoppingCartItem(int snackId)
         {
             var selectedSnack = _snackRepository.Snacks
                 .FirstOrDefault(s => s.SnackId == snackId);
@@ -44,7 +44,7 @@ namespace VendaDeLanches.Controllers
             return RedirectToAction("Index");
         }
             
-        public IActionResult RemoveItemFromShoppingCart(int snackId)
+        public IActionResult RemoveShoppingCartItem(int snackId)
         {
             var selectedSnack = _snackRepository.Snacks
                                 .FirstOrDefault(s => s.SnackId == snackId);

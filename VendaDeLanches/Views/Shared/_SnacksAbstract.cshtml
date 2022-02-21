@@ -4,9 +4,20 @@
     <div class="card" style="width: 18rem;">
         <img src="@Model.ImageURL" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">@Model.SnackName</h5>
+            <h5 class="card-title" asp-controller="Snacks" asp-action="Details" asp-route-snackid="@Model.SnackId">
+                @Model.SnackName
+            </h5>
             <p class="card-text">@Model.Price.ToString("c")</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a class="btn btn-outline-primary" asp-controller="Snacks" asp-action="Details"
+                   aso-route-snackId="@Model.SnackId">
+                   Detalhes
+               </a>
+                <a class="btn btn-primary" id="addCartButton" asp-controller="shoppingCart" asp-action="AddShoppingCartItem"
+                   aso-route-snackId="@Model.SnackId">
+                    Incluir no carrinho
+                </a>
+            </div>
         </div>
     </div>
 </div>
