@@ -1,4 +1,6 @@
-﻿<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+﻿@model ShoppingCartViewModel
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div class="container bootstrap snippets bootdey">
     <div class="col-md-12 col-sm-12 content">
         <div class="row">
@@ -9,14 +11,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Description</th>
-                                        <th>Qty</th>
-                                        <th>Price</th>
+                                        <th>Produto</th>
+                                        <th>Descrição</th>
+                                        <th>Qtd</th>
+                                        <th>Preço</th>
                                         <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @Model.ShoppingCart
                                     <tr>
                                         <td><img src="https://via.placeholder.com/400x200/FFB6C1/000000" class="img-cart"></td>
                                         <td><strong>Product 1</strong><p>Size : 26</p></td>

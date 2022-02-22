@@ -1,22 +1,198 @@
 ﻿@model Snack
 
-<div class="col-md-3" style="justify-content: space-between">
-    <div class="card" style="width: 18rem;">
-        <img src="@Model.ImageURL" class="card-img-top" alt="...">
+<div class="col-md-4">
+    <div class="card" style="width: 21rem;">
+        <img src="@Model.ImageURL" class="card-img-top" alt="@Model.SnackName">
         <div class="card-body">
             <h5 class="card-title" asp-controller="Snacks" asp-action="Details" asp-route-snackid="@Model.SnackId">
                 @Model.SnackName
             </h5>
             <p class="card-text">@Model.Price.ToString("c")</p>
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <div class="btn-group" role="group">
                 <a class="btn btn-outline-primary" asp-controller="Snacks" asp-action="Details"
-                   aso-route-snackId="@Model.SnackId">
-                   Detalhes
-               </a>
-                <a class="btn btn-primary" id="addCartButton" asp-controller="shoppingCart" asp-action="AddShoppingCartItem"
-                   aso-route-snackId="@Model.SnackId">
-                    Incluir no carrinho
+                   aso-route-snackId="@Model.SnackId" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Detalhes
                 </a>
+                <a class="btn btn-primary" id="addCartButton" asp-controller="ShoppingCart" asp-action="AddShoppingCartItem"
+                   aso-route-snackId="@Model.SnackId">
+                    Add Item +
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-md-6">
+
+                        <!--<a data-fancybox='img-produto-Pizza-Pequena-3' href='/img/produtos/a886571360c6edfaae9e443c20318b1b.jpg'>-->
+                        <div class="img-pedido-modal" style="background-image: url(/img/produtos/a886571360c6edfaae9e443c20318b1b.jpg);"></div>
+                        <!--</a>-->
+
+                        <h1>Pizza Pequena</h1>
+
+                        <p class="scrollbar">Pizza 25cm, 6 fatias, até 2 sabores. Todas as pizzas salgadas acompanham molho de tomate e orégano.</p>
+				</div>
+
+                <div class="col-md-6">
+										  		<div class="configuracoes-pedido scrollbar">
+										    	
+												    		<div class="opcoes-modal">
+														  		<label><strong>Sabores: </strong>Escolha 2 opções </label>
+
+														  		<ul class="opcoes-modal-geral itens-radio">
+																	  																  			<li class="">
+																  				<input id="7956099-2" class="opcao-novo opcaoProdutoAdd-7956099 opcao-18681-1490504 none" type="checkbox" name="opcaoProduto[]" value="18681">
+																  				
+																  				<label class="left-adicionais">Alho e Óleo</label>
+
+																  				<div id="aumenta-quantidade-18681-1490504" class="aumenta-quantidade soft-hover aumenta-quantidade-413 aumenta-quantidade-opcao" style="display: block;">
+
+																  					<input class="complementoId" value="18681-1490504" type="hidden">
+													  								<input class="idProd" value="700" type="hidden">
+													  								<input class="idProdERand" value="700-1490504" type="hidden">
+													  								<input class="valor" value="0.00" type="hidden">
+													  								<input class="qtdMax" value="2" type="hidden">
+													  								<input class="qtdMaxItem" value="2" type="hidden">
+
+															  							+
+														  						</div>
+
+													  							<input id="413-2-2-700" class="validacaoInicial qtd-max-opcoes-700-1490504 qtd-413-1490504 qtd-opc-413 qtd-18681-1490504 qtd-opc-geral" type="number" name="qtdOpcaoProduto[]" min="0" max="2" readonly="">
+
+													  							<div id="diminui-quantidade-18681-1490504" class="diminui-quantidade diminui-quantidade-opcao">
+
+													  								<input class="complementoId" value="18681-1490504" type="hidden">
+
+													  								<input class="idProd" value="700" type="hidden">
+
+													  								<input class="idProdERand" value="700-1490504" type="hidden">
+
+													  								<input class="valor" value="0.00" type="hidden">
+
+													  								<input class="qtdMax" value="2" type="hidden">
+
+														  							-
+														  						</div>
+
+																  				<label class="right-adicionais">+ R$ 0,00</label><br>
+
+																  				<span>Mussarela, alho, azeitonas e cebolas.</span>
+															  				</li>
+													  			</ul>
+													  		</div>
+													  		
+												    		<div class="opcoes-modal">
+														  		<label><strong>Deseja Borda Recheada?: </strong>Escolha 1 opção  </label>
+
+														  		<ul class="opcoes-modal-geral itens-radio">
+													  		<input type="hidden" name="qtdSelecionados-416" value="1">
+													  				<div class="valor-opc-416" style="display: none;"></div>
+													  			
+													  				<input id="700" class="input-valores input-valores-700 valores-opt-416" type="hidden" value="0">
+													  			
+																  			<li>
+																  				<input id="10.00-416-700-5953715" class="opcao-qtd1" type="radio" name="opcaoProduto-416" value="18676">
+																  				<label for="10.00-416-700-5953715" class="left-adicionais">Catupiry</label>
+																  				<label for="10.00-416-700-5953715" class="right-adicionais">+ R$ 10,00</label><br>
+
+															  					
+															  				</li>
+																  		
+																  			<li>
+																  				<input id="10.00-416-700-8443633" class="opcao-qtd1" type="radio" name="opcaoProduto-416" value="18677">
+																  				<label for="10.00-416-700-8443633" class="left-adicionais">Cheddar</label>
+																  				<label for="10.00-416-700-8443633" class="right-adicionais">+ R$ 10,00</label><br>
+
+															  					
+															  				</li>
+																  		
+																  			<li>
+																  				<input id="10.00-416-700-3094669" class="opcao-qtd1" type="radio" name="opcaoProduto-416" value="18678">
+																  				<label for="10.00-416-700-3094669" class="left-adicionais">Requeijão Cremoso</label>
+																  				<label for="10.00-416-700-3094669" class="right-adicionais">+ R$ 10,00</label><br>
+
+															  					
+															  				</li>
+																  		
+																  			<li>
+																  				<input id="10.00-416-700-2716255" class="opcao-qtd1" type="radio" name="opcaoProduto-416" value="18679">
+																  				<label for="10.00-416-700-2716255" class="left-adicionais">Chocolate Preto</label>
+																  				<label for="10.00-416-700-2716255" class="right-adicionais">+ R$ 10,00</label><br>
+
+															  					
+															  				</li>
+																  		
+																  			<li>
+																  				<input id="10.00-416-700-4953899" class="opcao-qtd1" type="radio" name="opcaoProduto-416" value="18680">
+																  				<label for="10.00-416-700-4953899" class="left-adicionais">Chocolate Branco</label>
+																  				<label for="10.00-416-700-4953899" class="right-adicionais">+ R$ 10,00</label><br>
+
+															  					
+															  				</li>
+																  		
+													  			</ul>
+													  		</div>
+													  		
+									  			</div>
+
+										  		<textarea placeholder="Observações para este produto" name="observacoes"></textarea>
+
+										  		<div class="qtd-pedido">
+										  			<span>Quantidade</span>
+
+
+										  			<div id="aumenta-quantidade-produto-700" class="aumenta-quantidade aumenta-quantidade-produto soft-hover">
+														<input class="complementoId" value="700-305562794" type="hidden">
+						  								<input class="idProd" value="700" type="hidden">
+
+														+
+													</div>
+										  			
+										  			<input id="qtd-produto-700" type="number" name="quantidadeProduto" min="1" value="1" required="">
+													
+													<div id="diminui-quantidade-produto-700-305562794" class="diminui-quantidade diminui-quantidade-produto">
+														<input class="complementoId" value="700-305562794" type="hidden">
+						  								<input class="idProd" value="700" type="hidden">
+
+														-
+													</div>
+
+										  			<br>
+										  		</div>
+
+										  		<div class="rodape-modal-pedido">
+
+										  			<input id="700" class="input-valores input-valores-700" type="hidden" value="39.99">
+
+										  			<input id="700" class="input-valores input-valores-700 calcula-qtd-valor-total-700" type="hidden" value="0">
+										  			
+										  			<input class="valor-total-700" type="hidden" value="39.99">
+
+										  			<div class="left-rdp"><span class="valor-produto-700 show-total-700">R$ 39,99</span></div>
+										  			
+										  			<input class="valor-produto-input-700 show-total-input-700" type="hidden" name="valorFinalProduto" value="39.99">
+										  			
+											  			<input id="submit-700" class="soft-hover disabled" type="submit" value="+ Adicionar" disabled="disabled">
+											  			
+
+										  		</div>
+				</div>
+
+				<div class="col-md-12">
+					@Model.DescriptionDetailed
+				</div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
