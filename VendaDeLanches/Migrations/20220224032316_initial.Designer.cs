@@ -12,8 +12,8 @@ using VendaDeLanches.Context;
 namespace VendaDeLanches.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220209024636_AddShoppingCartItens")]
-    partial class AddShoppingCartItens
+    [Migration("20220224032316_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,7 +47,7 @@ namespace VendaDeLanches.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("VendaDeLanches.Models.ShoppingCart", b =>
+            modelBuilder.Entity("VendaDeLanches.Models.ShoppingCartItens", b =>
                 {
                     b.Property<string>("ShoppingCartId")
                         .HasColumnType("nvarchar(450)");
@@ -119,7 +119,7 @@ namespace VendaDeLanches.Migrations
                     b.ToTable("Snacks");
                 });
 
-            modelBuilder.Entity("VendaDeLanches.Models.ShoppingCart", b =>
+            modelBuilder.Entity("VendaDeLanches.Models.ShoppingCartItens", b =>
                 {
                     b.HasOne("VendaDeLanches.Models.Snack", "Snack")
                         .WithMany()

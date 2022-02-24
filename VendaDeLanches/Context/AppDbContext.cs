@@ -16,5 +16,9 @@ namespace VendaDeLanches.Context
 
         public DbSet<ShoppingCartItens> ShoppingCartItens { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+
     }
 }

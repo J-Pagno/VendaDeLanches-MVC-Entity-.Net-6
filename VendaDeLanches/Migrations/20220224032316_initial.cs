@@ -4,7 +4,7 @@
 
 namespace VendaDeLanches.Migrations
 {
-    public partial class AddShoppingCartItens : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,9 +54,9 @@ namespace VendaDeLanches.Migrations
                 columns: table => new
                 {
                     ShoppingCartId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ShoppingCartItemId = table.Column<int>(type: "int", maxLength: 200, nullable: false),
                     SnackId = table.Column<int>(type: "int", nullable: true),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    ShoppingCartItemId = table.Column<int>(type: "int", maxLength: 200, nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
